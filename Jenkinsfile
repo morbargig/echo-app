@@ -13,11 +13,12 @@ pipeline {
     stages {
         stage('pull') {
             steps {
-        //         script {
-        //             commit=sh (script: "git log -1 | tail -1", returnStdout: true).trim()
-        //         }  
-        //         echo "${commit}" 
-                // git url  clone https://github.com/morbargig/echo-app.git"
+                script {
+                    commit=sh (script: "git log -1 | tail -1", returnStdout: true).trim()
+                }  
+                
+                // echo "${commit}" 
+                sh "git clone https://github.com/morbargig/echo-app.git"
                 sh 'printenv'
             }
         }          
