@@ -28,28 +28,28 @@ pipeline {
         }          
       
 
-        stage('build') { 
-            steps {
-                script{
-                    dir(${branch}){    
-                        sh "docker build -t ${branch}-${commit} ." 
-                    }
+        // stage('build') { 
+        //     steps {
+        //         script{
+        //             dir(${branch}){    
+        //                 sh "docker build -t ${branch}-${commit} ." 
+        //             }
             
-                }
-            }
-        }
+        //         }
+        //     }
+        // }
 
-        stage('deply') {
-            steps { 
-                 dir('app'){
-                    script{   
-                        docker.withRegistry( '', registryCredential ){
-                        sh "docker tag ${brach}-${commit} morbargig/echo-app:${brach}-${commit}"
-                        sh "docker push morbargig/echo-app:${brach}-${commit}"
-                     }
-                 }
-             }
-        }
+        // stage('deply') {
+        //     steps { 
+        //          dir('app'){
+        //             script{   
+        //                 docker.withRegistry( '', registryCredential ){
+        //                 sh "docker tag ${brach}-${commit} morbargig/echo-app:${brach}-${commit}"
+        //                 sh "docker push morbargig/echo-app:${brach}-${commit}"
+        //              }
+        //          }
+        //      }
+        // }
         
         // post {
         //     always{
