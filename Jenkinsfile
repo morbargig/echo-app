@@ -16,7 +16,8 @@ pipeline {
         //             commit=sh (script: "git log -1 | tail -1", returnStdout: true).trim()
         //         }  
         //         echo "${commit}" 
-                    sh 'printenv'
+                sh "git clone https://github.com/morbargig/echo-app.git"
+                sh 'printenv'
             }
         }          
       
