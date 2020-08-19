@@ -13,12 +13,13 @@ pipeline {
     stages {
         stage('pull') {
             steps {
-                script {
-                    commit=sh (script: "git log -1 | tail -1", returnStdout: true).trim()
-                }  
+                // git 'https://github.com/jenkinsci/git-plugin'
+                // script {
+                //     commit=sh (script: "git log -1 | tail -1", returnStdout: true).trim()
+                // }  
                 
                 echo "${commit} ${email} ${BRANCH_NAME}" 
-                // sh "git clone https://github.com/morbargig/echo-app.git"
+                sh "git clone https://github.com/morbargig/echo-app.git"
                 sh 'printenv'
             }
         }          
