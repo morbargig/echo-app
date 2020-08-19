@@ -5,18 +5,18 @@ def repo = "https://github.com/morbargig/echo-app"
 pipeline {
 
     agent any
-    tools {
-    terraform 'terraform'
-    }
+    // tools {
+    // terraform 'terraform'
+    // }
     
     stages {
         stage('pull') {
-        //     steps {
+            steps {
         //         script {
         //             commit=sh (script: "git log -1 | tail -1", returnStdout: true).trim()
         //         }  
         //         echo "${commit}" 
-            sh 'printenv'
+                    sh 'printenv'
             }
         }          
       
