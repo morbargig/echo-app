@@ -1,5 +1,6 @@
 def email = "morbargig"
 def repo = "https://github.com/morbargig/echo-app"
+def branch = ${BRANCH_NAME}
 
 
 pipeline {
@@ -13,48 +14,42 @@ pipeline {
     stages {
         stage('pull') {
             steps {
-
-                // git 'https://github.com/jenkinsci/git-plugin'
+                
                 script {
+                    if (! ${stdout} in ["dev","master",'stg']){
+                        currentBuild.result = 'UNSTABLE'
+                        return
+                    }
                     commit=sh (script: "git log -1 | tail -1", returnStdout: true).trim()
                 }  
-                echo "${commit} ${email} ${BRANCH_NAME}" 
-                sh "git clone https://github.com/morbargig/echo-app"
-                sh 'printenv'
+                sh "mkdir ${branch}"
+                // return
             }
         }          
       
 
-        // stage('build') { 
-        //     steps {
-        //         script{
-        //             dir('dev'){    
-        //                 sh "docker build -t dev-${GIT_COMMIT_HASH} ." 
-        //             }
-        //             dir('master'){    
-        //                 sh "docker build -t 1.0.${JENKINS_BUILD_NUMBER}  ." 
-        //             }
-        //             dir('staging'){    
-        //                 sh "docker build -t 'staging-${GIT_COMMIT_HASH}'  ." 
-        //             }
+        stage('build') { 
+            steps {
+                script{
+                    dir(${branch}){    
+                        sh "docker build -t ${branch}-${commit} ." 
+                    }
             
-        //         }
-        //     }
-        // }
+                }
+            }
+        }
 
-        // stage('deply') {
-            
-        //     steps { 
-        //          dir('app'){
-        //             script{   
-        //                 docker.withRegistry( '', registryCredential ){
-        //                 sh "docker tag dev-${GIT_COMMIT_HASH} gangoll/dev-${GIT_COMMIT_HASH} && docker push gangoll/dev-${GIT_COMMIT_HASH}"
-        //                 sh "docker tag 1.0.${env.JENKINS_BUILD_NUMBER} gangoll/1.0.${env.JENKINS_BUILD_NUMBER} && docker push gangoll/1.0.${env.JENKINS_BUILD_NUMBER}"
-        //                 sh "docker tag staging-${GIT_COMMIT_HASH} gangoll/staging-${GIT_COMMIT_HASH} && docker push gangoll/staging-${GIT_COMMIT_HASH}"}
-        //              }
-        //          }
-        //      }
-        // }
+        stage('deply') {
+            steps { 
+                 dir('app'){
+                    script{   
+                        docker.withRegistry( '', registryCredential ){
+                        sh "docker tag ${brach}-${commit} morbargig/echo-app:${brach}-${commit} 
+                        sh "docker push morbargig/echo-app:${brach}-${commit}"
+                     }
+                 }
+             }
+        }
         
         // post {
         //     always{
