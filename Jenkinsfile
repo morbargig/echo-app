@@ -16,11 +16,11 @@ pipeline {
     stages {
         stage('pull') {
             steps {
-                
+
 
                 script {
                     def exit = true
-                    if (! ["dev","master",'stg'].contains("${branch}")  ) {
+                    if ( "${branch}" == "master"  ) { 
                         currentBuild.result = 'UNSTABLE'
                         return
                     }
