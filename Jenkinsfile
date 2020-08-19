@@ -18,7 +18,7 @@ pipeline {
             steps {
 
                 script {
-                    if (! (${branch} in ["dev","master",'stg']) ){
+                    if (! ["dev","master",'stg'].contains(${branch}) ) {
                         currentBuild.result = 'UNSTABLE'
                         return
                     }
