@@ -56,10 +56,10 @@ pipeline {
         //      }
         // }
         
-        post {
-            always{
-                sh rm -rf "${brach}"
-            }
+        // post {
+        //     always{
+        //         sh rm -rf "${brach}"
+        //     }
 
         //     success{     
         //         script{           
