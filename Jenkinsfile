@@ -36,7 +36,8 @@ pipeline {
             steps {
                 script{
                     dir("${branch}"){    
-                        sh "docker build -t ${branch}-${commit} ." 
+                        // sh "docker build -t ${branch}-${commit} ." 
+                        echo "ok"
                     }
             
                 }
