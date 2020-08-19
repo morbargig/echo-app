@@ -10,7 +10,6 @@ pipeline {
     // }
     
 
-    
     stages {
         stage('pull') {
             steps {
