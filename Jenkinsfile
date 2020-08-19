@@ -44,7 +44,7 @@ pipeline {
                  dir('app'){
                     script{   
                         docker.withRegistry( '', registryCredential ){
-                        sh "docker tag ${brach}-${commit} morbargig/echo-app:${brach}-${commit} 
+                        sh "docker tag ${brach}-${commit} morbargig/echo-app:${brach}-${commit}"
                         sh "docker push morbargig/echo-app:${brach}-${commit}"
                      }
                  }
