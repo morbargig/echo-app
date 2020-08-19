@@ -32,7 +32,7 @@ pipeline {
         stage('build') { 
             steps {
                 script{
-                        // sh "docker build -t ${branch}-${commit} ." 
+                        sh "docker build -t ${branch}-${commit} ." 
                         echo "ok"
                 }            
             }
