@@ -1,6 +1,5 @@
 def email = "morbargig"
 def repo = "https://github.com/morbargig/echo-app"
-def branch = ${BRANCH_NAME}
 
 
 pipeline {
@@ -19,6 +18,7 @@ pipeline {
 
 
                 script {
+                    def branch = ${BRANCH_NAME}
                     def exit = true
                     if ( "${branch}" == "master"  ) { 
                         currentBuild.result = 'UNSTABLE'
