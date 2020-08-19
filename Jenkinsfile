@@ -19,7 +19,7 @@ pipeline {
                 // }  
                 // echo "${commit} ${email} ${BRANCH_NAME}" 
                 // sh "git clone https://github.com/morbargig/echo-app"
-                // sh 'printenv'
+                sh 'printenv'
             }
         }          
       
