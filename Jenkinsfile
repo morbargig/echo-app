@@ -16,7 +16,7 @@ pipeline {
             steps {
                 
                 script {
-                    if (! ${stdout} in ["dev","master",'stg']){
+                    if (! (${stdout} in ["dev","master",'stg']) ){
                         currentBuild.result = 'UNSTABLE'
                         return
                     }
