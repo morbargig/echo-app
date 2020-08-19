@@ -18,14 +18,15 @@ pipeline {
 
 
                 script {
-                    def branch = ${BRANCH_NAME}
+                    def branch = "${BRANCH_NAME}"
                     def exit = true
-                    if ( "${branch}" == "master"  ) { 
+                    if ( "${branch}" == "master" ) { 
                         currentBuild.result = 'UNSTABLE'
                         return
                     }
                     commit=sh (script: "git log -1 | tail -1", returnStdout: true).trim()
                 }  
+                echo 
                 // sh "mkdir ${branch}"
                 // return
             }
