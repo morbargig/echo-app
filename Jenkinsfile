@@ -16,6 +16,7 @@ pipeline {
     stages {
         stage('pull') {
             steps {
+                
 
                 script {
                     def exit = true
