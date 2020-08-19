@@ -18,7 +18,8 @@ pipeline {
             steps {
 
                 script {
-                    if (! ["dev","master",'stg'].contains(${branch}) ) {
+                    def exit = true
+                    if (! ["dev","master",'stg'].contains("${branch}")  ) {
                         currentBuild.result = 'UNSTABLE'
                         return
                     }
