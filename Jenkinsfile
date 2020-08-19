@@ -1,5 +1,5 @@
-def email = "morbargig"
-def repo = "https://github.com/morbargig/echo-app"
+// def email = "morbargig"
+// def repo = "https://github.com/morbargig/echo-app"
 
 
 pipeline {
@@ -73,5 +73,5 @@ pipeline {
         //         }
         //     }
         // } 
-    // }
+    }
 }
