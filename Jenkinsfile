@@ -1,6 +1,6 @@
 def email = "morbargig"
 def repo = "https://github.com/morbargig/echo-app"
-def branch = ${BRANCH_NAME}
+// def branch = ${BRANCH_NAME}
 
 
 pipeline {
