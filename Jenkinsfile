@@ -20,7 +20,7 @@ pipeline {
 
                 script {
                     def exit = true
-                    if ( !["dev","master",'stg'].contains("${branch}")  ) {
+                    if ( !["dev","master",'stg'].contains("${branch}")) {
                         currentBuild.result = 'UNSTABLE'
                         return
                     }
@@ -32,16 +32,16 @@ pipeline {
         }          
       
 
-        // stage('build') { 
-        //     steps {
-        //         script{
-        //             dir(${branch}){    
-        //                 sh "docker build -t ${branch}-${commit} ." 
-        //             }
+        stage('build') { 
+            steps {
+                script{
+                    dir("${branch}"){    
+                        sh "docker build -t ${branch}-${commit} ." 
+                    }
             
-        //         }
-        //     }
-        // }
+                }
+            }
+        }
 
         // stage('deply') {
         //     steps { 
@@ -55,10 +55,10 @@ pipeline {
         //      }
         // }
         
-        // post {
-        //     always{
-        //         echo 'push new docker image'
-        //     }
+        post {
+            always{
+                sh rm -rf "${brach}"
+            }
 
         //     success{     
         //         script{           
