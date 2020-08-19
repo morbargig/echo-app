@@ -10,14 +10,14 @@ pipeline {
     }
     
     stages {
-        // stage('pull') {
+        stage('pull') {
         //     steps {
         //         script {
         //             commit=sh (script: "git log -1 | tail -1", returnStdout: true).trim()
         //         }  
         //         echo "${commit}" 
             sh 'printenv'
-            // }
+            }
         }          
       
         // stage('build') { 
