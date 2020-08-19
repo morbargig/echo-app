@@ -1,5 +1,5 @@
-// def email = "morbargig"
-// def repo = "https://github.com/morbargig/echo-app"
+def email = "morbargig"
+def repo = "https://github.com/morbargig/echo-app"
 
 
 pipeline {
@@ -17,8 +17,8 @@ pipeline {
                     commit=sh (script: "git log -1 | tail -1", returnStdout: true).trim()
                 }  
                 
-                // echo "${commit}" 
-                sh "git clone https://github.com/morbargig/echo-app.git"
+                echo "${commit} ${email} ${BRANCH_NAME}" 
+                // sh "git clone https://github.com/morbargig/echo-app.git"
                 sh 'printenv'
             }
         }          
