@@ -1,5 +1,6 @@
 def email = "morbargig"
 def repo = "https://github.com/morbargig/echo-app"
+def branch = "${BRANCH_NAME}"
 
 
 pipeline {
@@ -18,16 +19,14 @@ pipeline {
 
 
                 script {
-                    def branch = "${BRANCH_NAME}"
                     def exit = true
-                    if ( "${branch}" == "master" ) { 
+                    if ( !["dev","master",'stg'].contains("${branch}")  ) {
                         currentBuild.result = 'UNSTABLE'
                         return
                     }
                     commit=sh (script: "git log -1 | tail -1", returnStdout: true).trim()
                 }  
-                // echo 
-                // sh "mkdir ${branch}"
+                sh "mkdir ${branch}"
                 // return
             }
         }          
