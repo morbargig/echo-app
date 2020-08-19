@@ -1,5 +1,5 @@
 port: 3000
 loglevel: info
-persist: true
+persist: false
 mongodburl: null
 dbname: echo
