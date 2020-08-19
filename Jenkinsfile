@@ -16,10 +16,7 @@ pipeline {
     stages {
         stage('pull') {
             steps {
-
-
                 script {
-                    def exit = true
                     if ( !["dev","master",'stg'].contains("${branch}")) {
                         currentBuild.result = 'UNSTABLE'
                         return
@@ -27,10 +24,6 @@ pipeline {
                     commit=sh (script: "git log -1 | tail -1", returnStdout: true).trim()
                 }  
                 echo pwd
-                
-                // sh "sudo mkdir ${branch}"
-
-                // return
             }
         }          
 
@@ -39,11 +32,9 @@ pipeline {
         stage('build') { 
             steps {
                 script{
-                    dir("${branch}"){    
-                        // sh "docker build -t ${branch}-${commit} ." 
+                        sh "docker build -t ${branch}-${commit} ." 
                         echo "ok"
-                    }
-            
+                    }            
                 }
             }
         }
