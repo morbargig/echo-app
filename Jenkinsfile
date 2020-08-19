@@ -24,7 +24,7 @@ pipeline {
                     // }
                     commit=sh (script: "git log -1 | tail -1", returnStdout: true).trim()
                 }  
-                sh "mkdir ${branch}"
+                // sh "mkdir ${branch}"
                 // return
             }
         }          
