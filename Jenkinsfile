@@ -18,7 +18,7 @@ pipeline {
                     commit=sh (script: "git log -1 | tail -1", returnStdout: true).trim()
                 }  
                 echo "${commit} ${email} ${BRANCH_NAME}" 
-                sh "git clone https://github.com/morbargig/echo-app.git ."
+                sh "git clone https://github.com/morbargig/echo-app"
                 sh 'printenv'
             }
         }          
