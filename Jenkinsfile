@@ -27,12 +27,13 @@ pipeline {
                     commit=sh (script: "git log -1 | tail -1", returnStdout: true).trim()
                 }  
                 echo pwd
+                
                 // sh "sudo mkdir ${branch}"
 
                 // return
             }
         }          
-        
+
       
 
         stage('build') { 
