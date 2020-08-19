@@ -18,13 +18,13 @@ pipeline {
             steps {
 
                 script {
-                    // if (! (${branch} in ["dev","master",'stg']) ){
-                    //     currentBuild.result = 'UNSTABLE'
-                    //     return
-                    // }
+                    if (! (${branch} in ["dev","master",'stg']) ){
+                        currentBuild.result = 'UNSTABLE'
+                        return
+                    }
                     commit=sh (script: "git log -1 | tail -1", returnStdout: true).trim()
                 }  
-                // sh "mkdir ${branch}"
+                sh "mkdir ${branch}"
                 // return
             }
         }          
