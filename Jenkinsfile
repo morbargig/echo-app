@@ -40,6 +40,7 @@ pipeline {
                     // echo "ok"            
                 }
             }
+            
         }
 
         stage('deply') {
