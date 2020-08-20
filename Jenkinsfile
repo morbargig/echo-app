@@ -32,6 +32,7 @@ pipeline {
                 sh "whoami"
             }
         }          
+        
       
 
         stage('build') { 
