@@ -7,8 +7,6 @@ pipeline {
 
 
     agent any
-
-
     stages {
         stage('pull') {
             steps {
@@ -26,7 +24,7 @@ pipeline {
                 // sh "whoami"
             }
         }      
-            
+
 
         stage('build') { 
             steps {
