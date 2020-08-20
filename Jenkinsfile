@@ -31,7 +31,7 @@ pipeline {
             steps {
                 script{
                     tag="{branch}-${commit}"
-                    if ( "${branch}" == master ){
+                    if ( "${branch}" == "master" ){
                         tag="${commit}"
                     }
                     // sh 'ls'
