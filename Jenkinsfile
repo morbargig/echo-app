@@ -37,7 +37,8 @@ pipeline {
             steps {
                 script{
                     sh 'ls'
-                    sh "docker build -t ${branch}-${commit} ." 
+                    sh "sudo docker"
+                    sh "sudo docker build -t ${branch}-${commit} ." 
                     echo "ok"            
                 }
             }
@@ -46,8 +47,8 @@ pipeline {
         stage('deply') {
             steps { 
                 script{   
-                    sh "docker tag ${brach}-${commit} morbargig/echo-app:${brach}-${commit}"
-                    sh "docker push morbargig/echo-app:${brach}-${commit}"
+                    sh "sudo docker tag ${brach}-${commit} morbargig/echo-app:${brach}-${commit}"
+                    sh "sudo docker push morbargig/echo-app:${brach}-${commit}"
                 }
             }
         }
