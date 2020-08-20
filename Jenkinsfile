@@ -28,30 +28,31 @@ pipeline {
                     commit=sh (script: "git log -1 | tail -1", returnStdout: true).trim()
                 }  
                 echo pwd
+                echo "${commit}"
                 // sh "sudo mkdir ${branch}"
                 // return
             }
         }          
       
 
-        stage('build') { 
-            steps {
-                script{
-                    sh 'ls'
-                    sh "docker build -t ${branch}-${commit} ." 
-                    echo "ok"            
-                }
-            }
-        }
+        // stage('build') { 
+        //     steps {
+        //         script{
+        //             sh 'ls'
+        //             sh "docker build -t ${branch}-${commit} ." 
+        //             echo "ok"            
+        //         }
+        //     }
+        // }
 
-        stage('deply') {
-            steps { 
-                script{   
-                    sh "docker tag ${brach}-${commit} morbargig/echo-app:${brach}-${commit}"
-                    sh "docker push morbargig/echo-app:${brach}-${commit}"
-                }
-            }
-        }
+        // stage('deply') {
+        //     steps { 
+        //         script{   
+        //             sh "docker tag ${brach}-${commit} morbargig/echo-app:${brach}-${commit}"
+        //             sh "docker push morbargig/echo-app:${brach}-${commit}"
+        //         }
+        //     }
+        // }
         
         // post {
         //     always{
