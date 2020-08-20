@@ -16,8 +16,6 @@ pipeline {
     stages {
         stage('pull') {
             steps {
-
-
                 script {
                     if ( !["dev","master","stg"].contains("${branch}")) {
                         echo "${branch}"
