@@ -49,7 +49,7 @@ pipeline {
         stage('deply') {
             steps { 
                 script{   
-                    echo "${branch}-${commit}" " morbargig/echo-app:${branch}-${commit}"
+                    echo "${branch}-${commit} morbargig/echo-app:${branch}-${commit}"
 
                     withCredentials([usernamePassword( credentialsId: 'docker-hub-credentials', usernameVariable: 'USERNAME', passwordVariable: 'PASSWORD')]) {
                         echo "${USERNAME}  ${PASSWORD}"
