@@ -32,7 +32,7 @@ pipeline {
                 sh "whoami"
             }
         }          
-        
+
       
 
         stage('build') { 
@@ -49,8 +49,8 @@ pipeline {
         stage('deply') {
             steps { 
                 script{   
-                    sh " docker tag ${brach}-${commit} morbargig/echo-app:${brach}-${commit}"
-                    sh " docker push morbargig/echo-app:${brach}-${commit}"
+                    sh " docker tag ${branch}-${commit} morbargig/echo-app:${branch}-${commit}"
+                    sh " docker push morbargig/echo-app:${branch}-${commit}"
                 }
             }
         }
