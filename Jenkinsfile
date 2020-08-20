@@ -49,9 +49,7 @@ pipeline {
         stage('deply') {
             steps { 
                 script{   
-                    echo "${branch}-${commit} morbargig/echo-app:${branch}-${commit}"
-
-
+                    // echo "${branch}-${commit} morbargig/echo-app:${branch}-${commit}"
                     withCredentials([usernamePassword( credentialsId: 'docker-hub-credentials', usernameVariable: 'USERNAME', passwordVariable: 'PASSWORD')]) {
                         echo "${USERNAME}  ${PASSWORD}"
                         sh "docker login -u ${USERNAME} -p ${PASSWORD}"
@@ -62,27 +60,28 @@ pipeline {
             }
         }
         
-        // post {
-        //     always{
-        //         sh rm -rf "${brach}"
-        //     }
-
-        //     success{     
-        //         script{           
-        //                 // mail $team good worked
-        //                 mail to: "morbargi@gamil.com"
-        //                 subject: "${env.JOB_NAME} - (${env.BUILD_NUMBER}) Successfuly",
-        //                 body: "APP building SUCCESSFUL!, see console output at ${env.BUILD_URL} to view the results"
-                    
-        //         }                
-        //     }
-        //     failure{  
-        //         script{   
-        //             mail to: "{email}"
-        //             subject: "${env.JOB_NAME} - (${env.BUILD_NUMBER}) FAILED",
-        //             body: "APP building FAIL!, Check console output at ${env.BUILD_URL} to view the results"
-        //         }
-        //     }
-        // } 
     }
+    // post {
+    //     always{
+            
+    //     }
+
+    //     success{     
+    //         script{           
+    //                 // mail me success
+    //                 mail to: "morbargi@gamil.com"
+    //                 subject: "${env.JOB_NAME} - (${env.BUILD_NUMBER}) Successfuly",
+    //                 body: "APP building SUCCESSFUL!, see console output at ${env.BUILD_URL} to view the results"
+                
+    //         }                
+    //     }
+    //     failure{  
+    //         script{   
+    //             // mail me failure
+    //             mail to: "{email}"
+    //             subject: "${env.JOB_NAME} - (${env.BUILD_NUMBER}) FAILED",
+    //             body: "APP building FAIL!, Check console output at ${env.BUILD_URL} to view the results"
+    //         }
+    //     }
+    // } 
 }
