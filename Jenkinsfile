@@ -30,7 +30,7 @@ pipeline {
         stage('build') { 
             steps {
                 script{
-                    tag="{branch}-${commit}"
+                    tag="${branch}-${commit}"
                     if ( "${branch}" == "master" ){
                         tag="${commit}"
                     }
@@ -40,6 +40,7 @@ pipeline {
                     // echo "ok"            
                 }
             }
+
         }
         
 
