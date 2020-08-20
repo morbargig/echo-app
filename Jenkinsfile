@@ -50,8 +50,12 @@ pipeline {
             steps { 
                 script{   
                     echo "${branch}-${commit}" " morbargig/echo-app:${branch}-${commit}"
-                    sh " docker tag ${branch}-${commit} morbargig/echo-app:${branch}-${commit}"
-                    sh " docker push morbargig/echo-app:${branch}-${commit}"
+
+                    withCredentials([usernamePassword( credentialsId: 'docker-hub-credentials', usernameVariable: 'USERNAME', passwordVariable: 'PASSWORD')]) {
+                        sh "docker login -u ${USERNAME} -p ${PASSWORD}"
+                        sh " docker tag ${branch}-${commit} morbargig/echo-app:${branch}-${commit}"
+                        sh " docker push morbargig/echo-app:${branch}-${commit}"
+                    }
                 }
             }
         }
