@@ -27,9 +27,9 @@ pipeline {
                     }
                     commit=sh (script: "git log -1 | tail -1", returnStdout: true).trim()
                 }  
-                echo pwd
-                echo "${commit}"
-                sh "whoami"
+                // echo pwd
+                // echo "${commit}"
+                // sh "whoami"
             }
         }          
 
@@ -38,10 +38,10 @@ pipeline {
         stage('build') { 
             steps {
                 script{
-                    sh 'ls'
-                    sh " docker"
+                    // sh 'ls'
+                    // sh " docker"
                     sh " docker build -t ${branch}-${commit} ." 
-                    echo "ok"            
+                    // echo "ok"            
                 }
             }
         }
@@ -49,6 +49,7 @@ pipeline {
         stage('deply') {
             steps { 
                 script{   
+                    echo "${branch}-${commit}" " morbargig/echo-app:${branch}-${commit}"
                     sh " docker tag ${branch}-${commit} morbargig/echo-app:${branch}-${commit}"
                     sh " docker push morbargig/echo-app:${branch}-${commit}"
                 }
