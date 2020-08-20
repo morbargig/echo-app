@@ -29,8 +29,6 @@ pipeline {
                 }  
                 echo pwd
                 echo "${commit}"
-                // sh "sudo mkdir ${branch}"
-                // return
             }
         }          
       
