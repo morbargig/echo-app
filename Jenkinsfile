@@ -53,9 +53,9 @@ pipeline {
 
                     withCredentials([usernamePassword( credentialsId: 'docker-hub-credentials', usernameVariable: 'USERNAME', passwordVariable: 'PASSWORD')]) {
                         echo "${USERNAME}  ${PASSWORD}"
-                        // sh "docker login -u ${USERNAME} -p ${PASSWORD}"
-                        // sh " docker tag ${branch}-${commit} morbargig/echo-app:${branch}-${commit}"
-                        // sh " docker push morbargig/echo-app:${branch}-${commit}"
+                        sh "docker login -u ${USERNAME} -p ${PASSWORD}"
+                        sh " docker tag ${branch}-${commit} morbargig/echo-app:${branch}-${commit}"
+                        sh " docker push morbargig/echo-app:${branch}-${commit}"
                     }
                 }
             }
