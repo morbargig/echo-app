@@ -19,7 +19,7 @@ pipeline {
 
 
                 script {
-                    if ( !["dev","master",'stg'].contains("${branch}")) {
+                    if ( !["dev","master","stg"].contains("${branch}")) {
                         echo "${branch}"
                         // currentBuild.result = 'UNSTABLE'
                         echo "not knowed branch"
@@ -38,23 +38,20 @@ pipeline {
             steps {
                 script{
                     sh 'ls'
-                    // sh "docker build -t ${branch}-${commit} ." 
+                    sh "docker build -t ${branch}-${commit} ." 
                     echo "ok"            
                 }
             }
         }
 
-        // stage('deply') {
-        //     steps { 
-        //          dir('app'){
-        //             script{   
-        //                 docker.withRegistry( '', registryCredential ){
-        //                 sh "docker tag ${brach}-${commit} morbargig/echo-app:${brach}-${commit}"
-        //                 sh "docker push morbargig/echo-app:${brach}-${commit}"
-        //              }
-        //          }
-        //      }
-        // }
+        stage('deply') {
+            steps { 
+                script{   
+                    sh "docker tag ${brach}-${commit} morbargig/echo-app:${brach}-${commit}"
+                    sh "docker push morbargig/echo-app:${brach}-${commit}"
+                }
+            }
+        }
         
         // post {
         //     always{
