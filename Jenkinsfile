@@ -23,7 +23,7 @@ pipeline {
                         echo "${branch}"
                         // currentBuild.result = 'UNSTABLE'
                         echo "not knowed branch"
-                        return
+                        // return
                     }
                     commit=sh (script: "git log -1 | tail -1", returnStdout: true).trim()
                 }  
