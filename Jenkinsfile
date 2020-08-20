@@ -19,9 +19,9 @@ pipeline {
 
 
                 script {
-                    def exit = true
                     if ( !["dev","master",'stg'].contains("${branch}")) {
-                        currentBuild.result = 'UNSTABLE'
+                        // currentBuild.result = 'UNSTABLE'
+                        echo "not knowed branch"
                         return
                     }
                     commit=sh (script: "git log -1 | tail -1", returnStdout: true).trim()
