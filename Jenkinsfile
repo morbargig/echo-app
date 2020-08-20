@@ -4,8 +4,6 @@ def branch = "${BRANCH_NAME}"
 
 
 pipeline {
-
-
     agent any
     stages {
         stage('pull') {
