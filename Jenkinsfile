@@ -20,6 +20,7 @@ pipeline {
 
                 script {
                     if ( !["dev","master",'stg'].contains("${branch}")) {
+                        echo "${branch}"
                         // currentBuild.result = 'UNSTABLE'
                         echo "not knowed branch"
                         return
