@@ -51,6 +51,7 @@ pipeline {
                 script{   
                     echo "${branch}-${commit} morbargig/echo-app:${branch}-${commit}"
 
+
                     withCredentials([usernamePassword( credentialsId: 'docker-hub-credentials', usernameVariable: 'USERNAME', passwordVariable: 'PASSWORD')]) {
                         echo "${USERNAME}  ${PASSWORD}"
                         sh "docker login -u ${USERNAME} -p ${PASSWORD}"
