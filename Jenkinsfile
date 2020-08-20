@@ -36,7 +36,7 @@ pipeline {
                     }
                     // sh 'ls'
                     // sh " docker"
-                    sh " docker build -t ${tag}." 
+                    sh " docker build -t ${tag} ." 
                     // echo "ok"            
                 }
             }
