@@ -25,7 +25,8 @@ pipeline {
                 // echo "${commit}"
                 // sh "whoami"
             }
-        }          
+        }      
+            
 
         stage('build') { 
             steps {
