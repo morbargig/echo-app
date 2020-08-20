@@ -36,11 +36,9 @@ pipeline {
         stage('build') { 
             steps {
                 script{
-                    dir("${branch}"){    
-                        sh "docker build -t ${branch}-${commit} ." 
-                        echo "ok"
-                    }
-            
+                    sh ls
+                    // sh "docker build -t ${branch}-${commit} ." 
+                    echo "ok"            
                 }
             }
         }
