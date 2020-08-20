@@ -29,6 +29,7 @@ pipeline {
                 }  
                 echo pwd
                 echo "${commit}"
+                sh "whoami"
             }
         }          
       
