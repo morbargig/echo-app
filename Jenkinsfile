@@ -36,9 +36,13 @@ pipeline {
         stage('build') { 
             steps {
                 script{
+                    tag="{branch}-${commit}"
+                    if ( "${branch}" == master ){
+                        tag="${commit}"
+                    }
                     // sh 'ls'
                     // sh " docker"
-                    sh " docker build -t ${branch}-${commit} ." 
+                    sh " docker build -t ${tag}." 
                     // echo "ok"            
                 }
             }
@@ -51,8 +55,8 @@ pipeline {
                     withCredentials([usernamePassword( credentialsId: 'docker-hub-credentials', usernameVariable: 'USERNAME', passwordVariable: 'PASSWORD')]) {
                         echo "${USERNAME}  ${PASSWORD}"
                         sh "docker login -u ${USERNAME} -p ${PASSWORD}"
-                        sh " docker tag ${branch}-${commit} morbargig/echo-app:${branch}-${commit}"
-                        sh " docker push morbargig/echo-app:${branch}-${commit}"
+                        sh " docker tag ${tag} morbargig/echo-app:${tag}"
+                        sh " docker push morbargig/echo-app:${tag}"
                     }
                 }
             }
