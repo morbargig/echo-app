@@ -33,6 +33,7 @@ pipeline {
             steps {
                 script{
                         sh "docker build -t ${branch}-${commit} ." 
+                        
                         echo "ok"
                 }            
             }
